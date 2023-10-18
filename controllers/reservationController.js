@@ -1,6 +1,7 @@
 "use strict"
 
 const Reservation = require("../models/reservationModel")
+const User = require("../models/userModel")
 
 module.exports = {
 
@@ -76,16 +77,20 @@ module.exports = {
         */
 
         const data = await Reservation.updateOne({_id:req.params.id}, req.body)
+        const currentData = await Reservation.findOne({_id:req.params.id})
         const sendEmail = (require("../helpers/mailer"))
-        const owner = await User.findOne({ _isOwner: true }, { _id: 0, email: 1, emailPassword:1 })
+        const owner = await User.findOne({isOwner: true }, { _id: 0, email: 1, emailPassword:1 })
 
        if(req.body.accepted)  {
-        sendEmail(data.email, "Your reservation has been confirmed")
+        sendEmail(currentData.guestEmail, "Your reservation has been confirmed")
        }
-        else if (!req.body.accepted) {
-            sendEmail(data.email, "Your reservation has been rejected")
+        else if (req.body.accepted==false) {
+            sendEmail(currentData.guestEmail, "Your reservation has been rejected")
         }
-        else(owner.email, "There is a new reservation")
+        else{
+            sendEmail(owner.email, "There is a new reservation")
+
+        }
         res.status(202).send({
             error:false,
             data,
