@@ -33,4 +33,4 @@ const RestaurantSchema = new mongoose.Schema({
    
 }, {collection:"restaurants", timestamps:true})
 
-module.exports = mongoose.model("Restaurants", RestaurantSchema)
+module.exports = mongoose.model("Restaurant", RestaurantSchema)

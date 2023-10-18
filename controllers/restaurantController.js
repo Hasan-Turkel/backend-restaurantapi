@@ -1,21 +1,21 @@
 "use strict"
 
-const Room = require("../models/roomModel")
+const Restaurant = require("../models/restaurantModel")
 
 module.exports = {
 
     list: async(req, res)=>{
 
-        const data = await res.getModelList(Room)
+        const data = await res.getModelList(Restaurant)
         res.status(200).send({
             error:false,
-            details:await res.getModelListDetails(Room),
+            details:await res.getModelListDetails(Restaurant),
             data
         })
     },
     create: async(req, res)=>{
 
-        const data = await Room.create(req.body)
+        const data = await Restaurant.create(req.body)
         res.status(201).send({
             error:false,
             data
@@ -23,7 +23,7 @@ module.exports = {
     },
     read: async(req, res)=>{
 
-        const data = await Room.findOne({_id:req.params.id
+        const data = await Restaurant.findOne({_id:req.params.id
         })
         res.status(200).send({
             error:false,
@@ -33,17 +33,17 @@ module.exports = {
     },
     update: async(req, res)=>{
 
-        const data = await Room.updateOne({_id:req.params.id})
+        const data = await Restaurant.updateOne({_id:req.params.id})
         res.status(202).send({
             error:false,
             data,
-            newData: await Room.findOne({_id:req.params.id}, req.body)
+            newData: await Restaurant.findOne({_id:req.params.id}, req.body)
         })
 
     },
     delete: async(req, res)=>{
 
-        const data = await Room.deleteOne({_id:req.params.id})
+        const data = await Restaurant.deleteOne({_id:req.params.id})
 
         res.status(data.deletedCount ? 204 : 404).send({
             error: !data.deletedCount,
