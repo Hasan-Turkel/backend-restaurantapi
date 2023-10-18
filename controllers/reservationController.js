@@ -75,11 +75,21 @@ module.exports = {
             }
         */
 
-        const data = await Reservation.updateOne({_id:req.params.id})
+        const data = await Reservation.updateOne({_id:req.params.id}, req.body)
+        const sendEmail = (require("../helpers/mailer"))
+        const owner = await User.findOne({ _isOwner: true }, { _id: 0, email: 1, emailPassword:1 })
+
+       if(req.body.accepted)  {
+        sendEmail(data.email, "Your reservation has been confirmed")
+       }
+        else if (!req.body.accepted) {
+            sendEmail(data.email, "Your reservation has been rejected")
+        }
+        else(owner.email, "There is a new reservation")
         res.status(202).send({
             error:false,
             data,
-            newData: await Reservation.findOne({_id:req.params.id}, req.body)
+            newData: await Reservation.findOne({_id:req.params.id})
         })
 
     },

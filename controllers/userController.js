@@ -77,11 +77,11 @@ module.exports = {
             }
         */
 
-        const data = await User.updateOne({_id:req.params.id})
+        const data = await User.updateOne({_id:req.params.id}, req.body)
         res.status(202).send({
             error:false,
             data,
-            newData: await User.findOne({_id:req.params.id}, req.body)
+            newData: await User.findOne({_id:req.params.id})
         })
 
     },
