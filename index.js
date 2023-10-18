@@ -56,7 +56,7 @@ app.all('/', (req, res) => {
 app.use('/users', require('./routes/userRouter'))
 app.use('/restaurants', require('./routes/restaurantRouter'))
 app.use('/reservations', require('./routes/reservationRouter'))
-app.use('/auth', require('./authRouter'))
+app.use('/auth', require('./routes/authRouter'))
 
 app.use(require("./middlewares/errorHandler"))
 

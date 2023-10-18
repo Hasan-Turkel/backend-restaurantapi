@@ -11,7 +11,7 @@ module.exports = {
 
     login: async (req, res) => {
         /*
-            #swagger.tags = ['Authentication']
+            #swagger.tags = ["Authentication"]
             #swagger.summary = 'Login'
             #swagger.description = 'Login with username and password'
             #swagger.parameters['body'] = {

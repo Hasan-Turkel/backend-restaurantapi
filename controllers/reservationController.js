@@ -1,13 +1,13 @@
 "use strict"
 
-const Reservation = require("../models/resarvationModel")
+const Reservation = require("../models/reservationModel")
 
 module.exports = {
 
     list: async(req, res)=>{
 
          /*
-            #swagger.tags = ["Reservations"]
+            #swagger.tags = ['Reservations']
             #swagger.summary = "List Reservations"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
