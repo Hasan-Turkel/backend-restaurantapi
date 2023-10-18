@@ -6,6 +6,19 @@ module.exports = {
 
     list: async(req, res)=>{
 
+         /*
+            #swagger.tags = ["Restaurants"]
+            #swagger.summary = "List Restaurants"
+            #swagger.description = `
+                You can send query with endpoint for search[], sort[], page and limit.
+                <ul> Examples:
+                    <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>
+                    <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>
+                    <li>URL/?<b>page=2&limit=1</b></li>
+                </ul>
+            `
+        */
+
         const data = await res.getModelList(Restaurant)
         res.status(200).send({
             error:false,
@@ -15,6 +28,18 @@ module.exports = {
     },
     create: async(req, res)=>{
 
+        /*
+            #swagger.tags = ["Restaurants"]
+            #swagger.summary = "Create Restaurant"
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    $ref: '#/definitions/Restaurant'
+                }
+            }
+        */
+
         const data = await Restaurant.create(req.body)
         res.status(201).send({
             error:false,
@@ -22,6 +47,11 @@ module.exports = {
         })
     },
     read: async(req, res)=>{
+
+        /*
+            #swagger.tags = ["Restaurant"]
+            #swagger.summary = "Get Single Restaurant"
+        */
 
         const data = await Restaurant.findOne({_id:req.params.id
         })
@@ -33,6 +63,19 @@ module.exports = {
     },
     update: async(req, res)=>{
 
+        /*
+            #swagger.tags = ["Restaurants"]
+            #swagger.summary = "Update Restaurant"
+            #swagger.description = "Look to <b>'Models/Personnel'</b> for parameters."
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: 'true',
+                schema: {
+                    $ref: '#/definitions/Restaurant'
+                }
+            }
+        */
+
         const data = await Restaurant.updateOne({_id:req.params.id})
         res.status(202).send({
             error:false,
@@ -42,6 +85,11 @@ module.exports = {
 
     },
     delete: async(req, res)=>{
+
+        /*
+            #swagger.tags = ["Restaurants"]
+            #swagger.summary = "Delete Restaurant"
+        */
 
         const data = await Restaurant.deleteOne({_id:req.params.id})
 

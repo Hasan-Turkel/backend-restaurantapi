@@ -1,13 +1,14 @@
 {
-  "name": "backend-hotelapi",
+  "name": "backend-reservationapi",
+  "title": "ReservationApi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reservation Management System",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Hasan Türkel",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.3.1",
@@ -15,6 +16,9 @@
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "redoc-express": "^2.1.0",
+    "swagger-autogen": "^2.23.6",
+    "swagger-ui-express": "^5.0.0"
   }
 }
