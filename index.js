@@ -18,13 +18,15 @@ app.use(require("./middlewares/authentication"))
 
 app.use(require("./middlewares/findSearchSortPage"))
 
+app.use(require('./middlewares/logger'))
+
 
 
 
 app.all('/', (req, res) => {
     res.send({
         error: false,
-        message: 'Welcome to hotelapi',
+        message: 'Welcome to RestaurantApi',
         
     })
 })
