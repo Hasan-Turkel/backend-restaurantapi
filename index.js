@@ -14,6 +14,8 @@ dbConnection()
 
 app.use(express.json())
 
+app.use(require("./middlewares/authentication"))
+
 app.use(require("./middlewares/findSearchSortPage"))
 
 
@@ -30,6 +32,7 @@ app.all('/', (req, res) => {
 app.use('/users', require('./routes/userRouter'))
 app.use('/restaurants', require('./routes/restaurantRouter'))
 app.use('/reservations', require('./routes/reservationRouter'))
+app.use('/auth', require('./authRouter'))
 
 app.use(require("./middlewares/errorHandler"))
 

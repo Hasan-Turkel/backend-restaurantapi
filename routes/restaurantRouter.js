@@ -3,10 +3,12 @@
 const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/restaurant:
-
+const permissions = require("../middlewares/permissions")
 const restaurant = require('../controllers/restaurantController')
 
 // URL: /restaurants
+
+router.use(permissions.isOwner)
 
 router.route('/')
     .get(restaurant.list)
