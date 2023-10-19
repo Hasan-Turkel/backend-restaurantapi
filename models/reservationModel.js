@@ -28,7 +28,7 @@ const ReservationSchema = new mongoose.Schema({
         },
     branchId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "restaurant",
+        ref: "Restaurant",
         required: true,
       
     },
