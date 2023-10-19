@@ -4,9 +4,8 @@ const Restaurant = require("../models/restaurantModel")
 
 module.exports = {
 
-    list: async(req, res)=>{
-
-         /*
+    list: async (req, res) => {
+      /*
             #swagger.tags = ["Restaurants"]
             #swagger.summary = "List Restaurants"
             #swagger.description = `
@@ -19,15 +18,16 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Restaurant)
-        res.status(200).send({
-            error:false,
-            details:await res.getModelListDetails(Restaurant),
-            data
-        })
-    },
-    create: async(req, res)=>{
 
+            const data = await res.getModelList(Restaurant)
+            res.status(200).send({
+                error:false,
+                details:await res.getModelListDetails(Restaurant),
+                data
+            })
+        },
+
+    create: async (req, res) => {
         /*
             #swagger.tags = ["Restaurants"]
             #swagger.summary = "Create Restaurant"
@@ -40,30 +40,31 @@ module.exports = {
             }
         */
 
-        const data = await Restaurant.create(req.body)
-        res.status(201).send({
-            error:false,
-            data
+        
+            const data = await Restaurant.create(req.body)
+            res.status(201).send({
+                error:false,
+                data
         })
     },
-    read: async(req, res)=>{
 
-        /*
-            #swagger.tags = ["Restaurant"]
+    read: async (req, res) => {
+       /*
+            #swagger.tags = ["Restaurants"]
             #swagger.summary = "Get Single Restaurant"
         */
 
-        const data = await Restaurant.findOne({_id:req.params.id
-        })
-        res.status(200).send({
-            error:false,
-            data
-        })
+            const data = await Restaurant.findOne({_id:req.params.id
+            })
+            res.status(200).send({
+                error:false,
+                data
+            })
 
     },
-    update: async(req, res)=>{
 
-        /*
+    update: async (req, res) => {
+            /*
             #swagger.tags = ["Restaurants"]
             #swagger.summary = "Update Restaurant"
             #swagger.description = "Look to <b>'Models/Personnel'</b> for parameters."
@@ -76,29 +77,29 @@ module.exports = {
             }
         */
 
-        const data = await Restaurant.updateOne({_id:req.params.id}, req.body)
-        res.status(202).send({
-            error:false,
-            data,
-            newData: await Restaurant.findOne({_id:req.params.id})
-        })
+            const data = await Restaurant.updateOne({_id:req.params.id}, req.body)
+            res.status(202).send({
+                error:false,
+                data,
+                newData: await Restaurant.findOne({_id:req.params.id})
+            })
+    
+        },
 
-    },
-    delete: async(req, res)=>{
-
+    delete: async (req, res) => {
+       
         /*
             #swagger.tags = ["Restaurants"]
             #swagger.summary = "Delete Restaurant"
         */
 
-        const data = await Restaurant.deleteOne({_id:req.params.id})
 
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data
-        })
+            const data = await Restaurant.deleteOne({_id:req.params.id})
 
+            res.status(data.deletedCount ? 204 : 404).send({
+                error: !data.deletedCount,
+                data
+            })
 
     },
-
 }

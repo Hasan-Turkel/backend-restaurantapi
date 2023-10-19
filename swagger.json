@@ -29,24 +29,46 @@
   "paths": {
     "/users/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "summary": "List Users",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create User",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Created"
           }
         }
       }
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get Single User",
         "description": "",
         "parameters": [
           {
@@ -57,28 +79,44 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update User",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "202": {
+            "description": "Accepted"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete User",
         "description": "",
         "parameters": [
           {
@@ -89,48 +127,85 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update User",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
     "/restaurants/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Restaurants"
+        ],
+        "summary": "List Restaurants",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "post": {
+        "tags": [
+          "Restaurants"
+        ],
+        "summary": "Create Restaurant",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Created"
           }
         }
       }
     },
     "/restaurants/{id}": {
       "get": {
+        "tags": [
+          "Restaurants"
+        ],
+        "summary": "Get Single Restaurant",
         "description": "",
         "parameters": [
           {
@@ -141,28 +216,44 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Restaurants"
+        ],
+        "summary": "Update Restaurant",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "202": {
+            "description": "Accepted"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Restaurants"
+        ],
+        "summary": "Delete Restaurant",
         "description": "",
         "parameters": [
           {
@@ -173,48 +264,101 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
       "patch": {
-        "description": "",
+        "tags": [
+          "Restaurants"
+        ],
+        "summary": "Update Restaurant",
+        "description": "Look to <b>'Models/Personnel'</b> for parameters.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Restaurant"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "202": {
+            "description": "Accepted"
           }
         }
       }
     },
     "/reservations/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "List Reservations",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "post": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Create Reservations",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accepted": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
     },
     "/reservations/{id}": {
       "get": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Get Single REservation",
         "description": "",
         "parameters": [
           {
@@ -225,12 +369,16 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       },
       "put": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Update Reservation",
         "description": "",
         "parameters": [
           {
@@ -238,15 +386,27 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reservation"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "202": {
+            "description": "Accepted"
           }
         }
       },
       "delete": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Delete Reservation",
         "description": "",
         "parameters": [
           {
@@ -257,12 +417,19 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
       "patch": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "Update Reservation",
         "description": "",
         "parameters": [
           {
@@ -270,11 +437,19 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Reservation"
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "202": {
+            "description": "Accepted"
           }
         }
       }
@@ -490,7 +665,7 @@
             },
             "ref": {
               "type": "string",
-              "example": "restaurant"
+              "example": "Restaurant"
             },
             "required": {
               "type": "boolean",
