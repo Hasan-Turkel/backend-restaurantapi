@@ -17,14 +17,18 @@ const ReservationSchema = new mongoose.Schema({
         required: true,
       
     },
-    dayAndHour: {
+    date: {
         type: Date,
+        required:true
+    },
+    hour:{
+        type:String,
         required:true
     },
 
     situation:{
         type:String,
-        default:"active"
+        default:"reserved"
     }
 }, {collection:"reservations", timestamps:true})
 

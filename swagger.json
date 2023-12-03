@@ -488,13 +488,13 @@
         }
       }
     },
-    "/auth/refresh": {
+    "/auth/register": {
       "post": {
         "tags": [
           "Authentication"
         ],
-        "summary": "Token Refresh",
-        "description": "Refresh accessToken with  ",
+        "summary": "Register",
+        "description": "Register with username, email and password for get simpleToken",
         "parameters": [
           {
             "name": "body",
@@ -503,14 +503,17 @@
             "schema": {
               "type": "object",
               "properties": {
-                "token": {
-                  "type": "object",
-                  "properties": {
-                    "refresh": {
-                      "type": "string",
-                      "example": "...refreshToken..."
-                    }
-                  }
+                "username": {
+                  "type": "string",
+                  "example": "test"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@mail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "1234"
                 }
               }
             }

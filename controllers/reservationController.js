@@ -19,10 +19,9 @@ module.exports = {
             `
         */
             let filters = req.user.isOwner ? {} : { guestName: req.user.username };
-            const data = await res.getModelList(Blog, filters, branchId)
+            const data = await res.getModelList(Reservation, filters, "branchId")
             res.status(200).send({
                 error:false,
-                details:await res.getModelListDetails(Reservation),
                 data
             })
     },
@@ -39,6 +38,8 @@ module.exports = {
             // }
 
             req.body.guestName = req.user.username;
+            const data = await Reservation.create(req.body);
+
         res.status(201).send({
             error: false,
             data
@@ -78,7 +79,7 @@ module.exports = {
       ? { _id: req.params.id }
       : { _id: req.params.id, guestName: req.user.username };
       
-    const data = await Blog.updateOne(filters, req.body, {
+    const data = await Reservation.updateOne(filters, req.body, {
       runValidators: true,
     });
 

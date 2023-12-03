@@ -1,6 +1,8 @@
 "use strict"
 
 const User = require("../models/userModel")
+const Token = require("../models/tokenModel")
+const passwordEncrypt = require('../helpers/passwordEncrypt')
 
 module.exports = {
 
@@ -18,13 +20,12 @@ module.exports = {
             `
         */
 
-            const filters = (req.user?.is_superadmin) ? {} : { _id: req.user?._id }
+            // const filters = req.user?.isOwner ? {} : { _id: req.user?._id }
         
-            const data = await res.getModelList(User, filters)
+            const data = await res.getModelList(User)
 
         res.status(200).send({
             error: false,
-            details: await res.getModelListDetails(User),
             data
         })
     },
@@ -43,7 +44,7 @@ module.exports = {
             }
         */
 
-            req.body.isOwner = false
+            // req.body.isOwner = false
 
             const data = await User.create(req.body)
     

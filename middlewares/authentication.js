@@ -2,7 +2,7 @@
 
 // app.use(authentication):
 
-const Token = require('../models/token')
+const Token = require('../models/tokenModel')
 
 module.exports = async (req, res, next) => {
 

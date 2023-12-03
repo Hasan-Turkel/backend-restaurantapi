@@ -28,7 +28,6 @@ const UserSchema = new mongoose.Schema({
             'Email type is not correct.'
         ]
     },
-
     is_active:{
         type:Boolean,
         default:true

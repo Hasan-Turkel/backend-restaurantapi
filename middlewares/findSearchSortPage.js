@@ -33,12 +33,11 @@ module.exports = (req, res, next) => {
     // Details:
     res.getModelListDetails = async function (Model, filters = {}) {
 
-        const filtersAndSearch = { ...filters, ...search }
+        const filtersAndSearch = { ...filters }
 
         const data = await Model.find(filtersAndSearch)
 
         let details = {
-            search,
             sort,
             skip,
             limit,

@@ -45,9 +45,9 @@ app.all('/', (req, res) => {
         message: 'Welcome to RestaurantApi',
         api: {
             documents: {
-                swagger: 'http://127.0.0.1:8000/docs/swagger',
-                redoc: 'http://127.0.0.1:8000/docs/redoc',
-                json: 'http://127.0.0.1:8000/docs/json',
+                swagger: '/docs/swagger',
+                redoc: '/docs/redoc',
+                json: '/docs/json',
             },
             contact: 'mhturkel@gmail.com'
         },

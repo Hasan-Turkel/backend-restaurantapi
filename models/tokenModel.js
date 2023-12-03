@@ -1,6 +1,6 @@
 "use strict"
 
-const { mongoose } = require('../configs/dbConnection')
+const mongoose = require("mongoose")
 /* ------------------------------------------------------- *
 {
   "user_id": "65343222b67e9681f937f001",
