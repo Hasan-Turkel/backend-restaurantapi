@@ -18,7 +18,9 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(User)
+            const filters = (req.user?.is_superadmin) ? {} : { _id: req.user?._id }
+        
+            const data = await res.getModelList(User, filters)
 
         res.status(200).send({
             error: false,
@@ -41,12 +43,21 @@ module.exports = {
             }
         */
 
-        const data = await User.create(req.body)
+            req.body.isOwner = false
 
-        res.status(201).send({
-            error: false,
-            data
-        })
+            const data = await User.create(req.body)
+    
+            // Create token for auto-login:
+            const tokenData = await Token.create({
+                user_id: data._id,
+                token: passwordEncrypt(data._id + Date.now())
+            })
+    
+            res.status(201).send({
+                error: false,
+                token: tokenData.token,
+                data
+            })
     },
 
     read: async (req, res) => {
@@ -55,7 +66,9 @@ module.exports = {
             #swagger.summary = "Get Single User"
         */
 
-        const data = await User.findOne({ _id: req.params.id })
+            const filters = (req.user?.isOwner) ? { _id: req.params.id } : { _id: req.user._id }
+
+            const data = await User.findOne(filters)
 
         res.status(200).send({
             error: false,
@@ -78,7 +91,10 @@ module.exports = {
             }
         */
 
-        const data = await User.updateOne({ _id: req.params.id }, req.body)
+            const filters = (req.user?.isOwner) ? { _id: req.params.id } : { _id: req.user._id }
+            req.body.isOwner = (req.user?.isOwner) ? req.body.isOwner : false
+    
+            const data = await User.updateOne(filters, req.body, { runValidators: true })
 
         res.status(202).send({
             error: false,
@@ -94,7 +110,9 @@ module.exports = {
             #swagger.summary = "Delete User"
         */
 
-        const data = await User.deleteOne({ _id: req.params.id })
+            const filters = (req.user?.isOwner) ? { _id: req.params.id } : { _id: req.user._id }
+
+            const data = await User.deleteOne(filters)
 
         res.status(data.deletedCount ? 204 : 404).send({
             error: !data.deletedCount,
