@@ -14,6 +14,8 @@ dbConnection()
 
 app.use(express.json())
 
+app.use(require('cors')())
+
 app.use(require("./middlewares/authentication"))
 
 app.use(require("./middlewares/findSearchSortPage"))

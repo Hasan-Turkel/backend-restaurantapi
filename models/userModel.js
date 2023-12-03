@@ -29,6 +29,11 @@ const UserSchema = new mongoose.Schema({
         ]
     },
 
+    is_active:{
+        type:Boolean,
+        default:true
+    },
+
     isOwner: {
         type: Boolean,
         default: false,
