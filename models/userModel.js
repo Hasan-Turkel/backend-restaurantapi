@@ -28,16 +28,6 @@ const UserSchema = new mongoose.Schema({
             'Email type is not correct.'
         ]
     },
-    emailPasword: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    phone: {
-        type: Number,
-        required: true,
-        unique:true,
-    },
 
     isOwner: {
         type: Boolean,

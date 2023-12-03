@@ -37,11 +37,7 @@ module.exports = {
             //     }
             // }
 
-            const sendEmail = (require("../helpers/mailer"))
-            const owner = await User.findOne({isOwner: true }, { _id: 0, email: 1, emailPassword:1 })
-            const data = await Reservation.create(req.body)
-            sendEmail(owner.email, "There is a new reservation")
-
+            
         res.status(201).send({
             error: false,
             data
@@ -77,17 +73,6 @@ module.exports = {
             }
         */
 
-            const data = await Reservation.updateOne({_id:req.params.id}, req.body)
-            const currentData = await Reservation.findOne({_id:req.params.id})
-            const sendEmail = (require("../helpers/mailer"))
-           
-    
-           if(req.body.accepted)  {
-            sendEmail(currentData.guestEmail, "Your reservation has been confirmed")
-           }
-            else if (req.body.accepted==false) {
-                sendEmail(currentData.guestEmail, "Your reservation has been rejected")
-            }
            
             res.status(202).send({
                 error:false,

@@ -18,7 +18,7 @@ app.use(require("./middlewares/authentication"))
 
 app.use(require("./middlewares/findSearchSortPage"))
 
-app.use(require('./middlewares/logger'))
+// app.use(require('./middlewares/logger'))
 
 
 const swaggerUi = require('swagger-ui-express')
@@ -56,6 +56,7 @@ app.all('/', (req, res) => {
 app.use('/users', require('./routes/userRouter'))
 app.use('/restaurants', require('./routes/restaurantRouter'))
 app.use('/reservations', require('./routes/reservationRouter'))
+app.use('/tokens', require('./routes/tokenRouter'))
 app.use('/auth', require('./routes/authRouter'))
 
 app.use(require("./middlewares/errorHandler"))

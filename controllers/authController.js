@@ -2,7 +2,7 @@
 
 // Auth Controller:
 
-const jwt = require('jsonwebtoken')
+
 const setToken = require('../helpers/setToken')
 
 const User = require('../models/userModel')
@@ -51,63 +51,7 @@ module.exports = {
         }
     },
 
-    refresh: async (req, res) => {
-        /*
-            #swagger.tags = ['Authentication']
-            #swagger.summary = 'Token Refresh'
-            #swagger.description = 'Refresh accessToken with refreshToken'
-            #swagger.parameters['body'] = {
-                in: 'body',
-                required: true,
-                schema: {
-                    token: {
-                        refresh: '...refreshToken...'
-                    }
-                }
-            }
-        */
-
-        const refreshToken = req.body?.token?.refresh
-
-        if (refreshToken) {
-
-            jwt.verify(refreshToken, process.env.REFRESH_KEY, async function (err, userData) {
-
-                if (err) {
-
-                    res.errorStatusCode = 401
-                    throw err
-                } else {
-
-                    const { _id, password } = userData
-
-                    if (_id && password) {
-
-                        const user = await User.findOne({ _id })
-
-                        if (user && user.password == password) {
-
-                            res.send({
-                                error: false,
-                                token: setToken(user, true)})
-                        } else {
-
-                            res.errorStatusCode = 401
-                            throw new Error('Wrong id or password.')
-                        }
-                    } else {
-
-                        res.errorStatusCode = 401
-                        throw new Error('Please enter id and password.')
-                    }
-                }
-            })
-
-        } else {
-            res.errorStatusCode = 401
-            throw new Error('Please enter token.refresh')
-        }
-    },
+    
 
     logout: async (req, res) => {
         /*

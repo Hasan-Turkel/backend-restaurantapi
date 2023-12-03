@@ -11,21 +11,6 @@ const ReservationSchema = new mongoose.Schema({
         required: true,
        
     },
-    guestEmail: {
-        type: String,
-        trim: true,
-        required: true,
-        unique:true,
-        validate: [
-            (guestEmail) => guestEmail.includes('@') && guestEmail.includes('.'),
-            'Email type is not correct.'
-        ]
-    },
-    guestPhone: {
-        type: Number,
-        required: true,
-        unique:true,
-        },
     branchId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Restaurant",
@@ -36,13 +21,9 @@ const ReservationSchema = new mongoose.Schema({
         type: Date,
         required:true
     },
-    note: {
-        type: String,
-        
-    },
 
-    accepted:{
-        type:Boolean,
+    situation:{
+        type:String,
     }
 }, {collection:"reservations", timestamps:true})
 
