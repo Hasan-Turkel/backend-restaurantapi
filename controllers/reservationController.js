@@ -18,7 +18,8 @@ module.exports = {
                 </ul>
             `
         */
-            const data = await res.getModelList(Reservation, {},  "branchId")
+            let filters = req.user.isOwner ? {} : { guestName: req.user.username };
+            const data = await res.getModelList(Blog, filters, branchId)
             res.status(200).send({
                 error:false,
                 details:await res.getModelListDetails(Reservation),
@@ -37,7 +38,7 @@ module.exports = {
             //     }
             // }
 
-            
+            req.body.guestName = req.user.username;
         res.status(201).send({
             error: false,
             data
@@ -72,6 +73,14 @@ module.exports = {
                 }
             }
         */
+
+            const filters = req.user?.isOwner
+      ? { _id: req.params.id }
+      : { _id: req.params.id, guestName: req.user.username };
+      
+    const data = await Blog.updateOne(filters, req.body, {
+      runValidators: true,
+    });
 
            
             res.status(202).send({

@@ -24,6 +24,7 @@ const ReservationSchema = new mongoose.Schema({
 
     situation:{
         type:String,
+        default:"active"
     }
 }, {collection:"reservations", timestamps:true})
 

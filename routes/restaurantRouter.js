@@ -8,17 +8,17 @@ const restaurant = require('../controllers/restaurantController')
 
 // URL: /restaurants
 
-router.use(permissions.isOwner)
+
 
 router.route('/')
     .get(restaurant.list)
-    .post(restaurant.create)
+    .post(permissions.isOwner, restaurant.create)
 
 router.route('/:id')
-    .get(restaurant.read)
-    .put(restaurant.update)
-    .patch(restaurant.update)
-    .delete(restaurant.delete)
+    .get(permissions.isOwner, restaurant.read)
+    .putpermissions.isOwner, (restaurant.update)
+    .patch(permissions.isOwner, restaurant.update)
+    .delete(permissions.isOwner, restaurant.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router
