@@ -10,12 +10,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true,
-        unique:true
+        unique:true,
+        index: true,
     },
     password: {
         type: String,
         trim: true,
         required: true,
+        index: true,
         set: (password) => passwordEncrypt(password)
     },
     email: {
@@ -23,6 +25,7 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         required: true,
         unique:true,
+        index: true,
         validate: [
             (email) => email.includes('@') && email.includes('.'),
             'Email type is not correct.'
