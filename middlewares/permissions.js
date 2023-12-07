@@ -11,9 +11,13 @@ module.exports = {
     
 
 
-        if (req.isLogin) {
+        if (req.user) {
+
+           
             next()
         } else {
+
+            
             res.errorStatusCode = 403
             throw new Error('NoPermission: You must login.')
         }
@@ -24,7 +28,7 @@ module.exports = {
         
       
         
-        if (req.isLogin && req.user.isOwner) {
+        if (req.user && req.user.isOwner) {
             next()
         } else {
             res.errorStatusCode = 403
