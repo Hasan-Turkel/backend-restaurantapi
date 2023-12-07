@@ -44,7 +44,7 @@ module.exports = {
             }
         */
 
-            // req.body.isOwner = false
+            req.body.isOwner = false
 
             const data = await User.create(req.body)
     

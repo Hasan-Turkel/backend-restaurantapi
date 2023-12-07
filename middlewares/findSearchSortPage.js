@@ -27,7 +27,7 @@ module.exports = (req, res, next) => {
 
         const filtersAndSearch = { ...filters }
 
-        return await Model.find(filtersAndSearch).populate(populate)
+        return await Model.find(filtersAndSearch).populate(populate).sort({createdAt:"desc"})
     }
 
     // Details:
